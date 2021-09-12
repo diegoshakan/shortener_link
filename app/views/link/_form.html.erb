@@ -1,0 +1,6 @@
+<%= form_for Link.new, url: '/link' do |f| %>
+
+  <%= f.text_field :url %>
+  <%= f.submit "Generate Short Link" %>
+
+<% end %>
