@@ -6,9 +6,9 @@ class LinkController < ApplicationController
   def create
     @link = Link.new(link_params)
     if @link.save
-      redirect_to @link
+      redirect_to @link, notice: 'Short Link was successfully created.'
     else
-      redirect_to :new
+      redirect_to new_link_url, notice: "Your url must has 'http://'"
     end
   end
 

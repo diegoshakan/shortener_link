@@ -1,6 +1,11 @@
 <%= form_for Link.new, url: '/link' do |f| %>
-
-  <%= f.text_field :url %>
-  <%= f.submit "Generate Short Link" %>
+  <div class="row">
+    <div class="col-3">
+      <%= f.text_field :url, class: "form-control" %>
+    </div>
+    <div class="col-3">
+      <%= f.submit "Generate Short Link", class: "btn btn-outline-success" %>
+    </div>
+  </div>
 
 <% end %>
