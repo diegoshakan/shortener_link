@@ -8,11 +8,11 @@ RSpec.describe 'ShortLink' do
   it "short_url" do
     result = ShortLink.new({ link: @link }).short_url
 
-    expect(result).to eq("http://localhost:3000/h")
+    expect(result).to eq("http://localhost:3000/#{@link.id.to_s(36)}")
   end
 
   it "redirect_to_link" do
-    params = "h"
+    params = @link.id.to_s(36)
     result = ShortLink.new({ params: params }).redirect_to_link
 
     expect(result.url).to eq(@link.url)
