@@ -1,10 +1,6 @@
 class LinkController < ApplicationController
-  def index; end
-
-  def show
-    @link = Link.find(params[:id])
-    url_extension = @link.id.to_s(36)
-    @short_url = "#{request.base_url}/#{url_extension}"
+  def new
+    @link = Link.new
   end
 
   def create
@@ -12,14 +8,13 @@ class LinkController < ApplicationController
     if @link.save
       redirect_to @link
     else
-      redirect_to :index
+      redirect_to :new
     end
   end
 
-  def send_to_url
-    id = params[:short_url].to_i(36)
-    link = Link.find(id)
-    redirect_to link.url
+  def show
+    @link = Link.find(params[:id])
+    @short_url = ShortLink.new({ link: @link }).short_url
   end
 
   private
